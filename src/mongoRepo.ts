@@ -26,6 +26,7 @@ export async function list(): Promise<any> {
 }
 
 export async function save(entry: WikiEntry): Promise<WikiEntry> {
+    console.log('Repo: About to save', entry);
     const collection = await getCollection();
     await collection.updateOne(
         {_id: entry.name}, 
@@ -36,6 +37,7 @@ export async function save(entry: WikiEntry): Promise<WikiEntry> {
 }
 
 export async function remove(_id: string): Promise<any> {
+    console.log('Repo: About to remove', _id);
     const collection = await getCollection();
     return collection.deleteOne({_id});
 }

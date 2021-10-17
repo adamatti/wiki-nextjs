@@ -1,11 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import * as mongoRepo from '../../../src/mongoRepo';
 
+const getString = (arg: string | string[]): string => {
+    if (Array.isArray(arg)) {
+        return arg[0];
+    }
+    return arg;
+}
+
 const deleteHandler = async (
     req: NextApiRequest,
     res: NextApiResponse<any>
 ) => {
-    const {name} = req.query;
+    const name = getString(req.query.name);
     await mongoRepo.remove(name);
     res.status(200).json({});
 }
@@ -14,7 +21,7 @@ const getHandler = async (
     req: NextApiRequest,
     res: NextApiResponse<any>
 ) => {
-    const {name} = req.query;
+    const name = getString(req.query.name);
     const entry = await mongoRepo.get(name);
 
     if (!entry.name) {

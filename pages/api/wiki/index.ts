@@ -18,6 +18,7 @@ const postHandler = async (
   res: NextApiResponse<any>
 ) => {
   const entry = req.body;
+  console.log("API: About to save", entry);
   await mongoRepo.save(entry);
   res.status(201)
     .setHeader('Content-Type', 'application/json')
