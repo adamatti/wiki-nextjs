@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box';
-import Link from 'next/link'
+import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
 
 type ShowWikiEntryParams = {
     name: string
@@ -9,12 +10,12 @@ type ShowWikiEntryParams = {
 const ShowWikiEntry = (props: ShowWikiEntryParams) => {
     const name = props.name;
 
-    return <Box>
+    return (<Box>
         <div>
             <h1>{name}</h1> [ <Link href={`/wiki/${name}/edit`}>edit</Link> | <Link href={`/wiki/${name}/delete`}>delete</Link> ]
         </div>
-        {props.text || 'No text provided'}
-        </Box>;
+        <ReactMarkdown>{props.text || 'No text provided'}</ReactMarkdown>
+    </Box>);
 }
 
 export default ShowWikiEntry;

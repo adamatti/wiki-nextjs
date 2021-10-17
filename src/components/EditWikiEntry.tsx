@@ -2,6 +2,9 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useRef } from 'react';
+import { Link, Paper } from '@mui/material';
+import styles from './EditWikiEntry.module.scss';
+import { style } from '@material-ui/system';
 
 type EditWikiEntryParams = {
     name: string,
@@ -22,15 +25,26 @@ const EditWikiEntry = (props: EditWikiEntryParams) => {
         })
     }
 
-    return (<form onSubmit={saveHandler}>
-            <Box component="form">
-                <label>Name: </label>
-                <TextField inputRef={nameRef} defaultValue={props.name} disabled={false}/><br/>
-                <label>Text: </label>
-                <TextField inputRef={textRef} defaultValue={props.text}/><br/>
+    return (
+        <>
+            <h1 className={styles.title}>Edit Entry</h1>
+            <form onSubmit={saveHandler}>
+                <TextField 
+                    label="Name"
+                    inputRef={nameRef} 
+                    defaultValue={props.name} 
+                    disabled={false}/>
+                <TextField 
+                    label="Text"
+                    inputRef={textRef} 
+                    defaultValue={props.text}
+                    multiline={true}
+                    minRows={5}
+                />
                 <Button onClick={saveHandler}>Save</Button>
-            </Box>
-        </form>)
+                <Link href={`/wiki/${props.name}`}>Cancel</Link>
+            </form>
+        </>)
 }
 
 export default EditWikiEntry;
