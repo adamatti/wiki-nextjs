@@ -1,8 +1,8 @@
-import EditWikiEntry from '../../../src/components/EditWikiEntry';
+import EditWikiEntry from '../../../components/EditWikiEntry';
 import { useRouter } from 'next/router'
-import * as wikiApiClient from '../../../src/wikiApiClient';
-import * as mongoRepo from '../../../src/mongoRepo';
-import {WikiEntry} from '../../../src/types';
+import * as wikiApiClient from '../../../wikiApiClient';
+import * as mongoRepo from '../../../mongoRepo';
+import {WikiEntry} from '../../../types';
 
 type EditPageParams = {
     name: string,

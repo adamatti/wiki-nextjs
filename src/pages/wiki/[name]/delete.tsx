@@ -1,4 +1,4 @@
-import * as mongoRepo from '../../../src/mongoRepo';
+import * as mongoRepo from '../../../mongoRepo';
 
 const DeletePage = () => {}
 

@@ -1,3 +1,8 @@
+clean:
+	rm -rf .next
+	rm -rf coverage
+	rm -rf node_modules
+
 run:
 	yarn dev
 

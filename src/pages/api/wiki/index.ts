@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { WikiEntry, ResponseError } from '../../../src/types';
-import * as mongoRepo from '../../../src/mongoRepo';
+import { WikiEntry, ResponseError } from '../../../types';
+import * as mongoRepo from '../../../mongoRepo';
 
 const getHandler = async (
   req: NextApiRequest,

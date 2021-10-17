@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import ShowWikiEntry from '../../../src/components/ShowWikiEntry';
-import * as mongoRepo from '../../../src/mongoRepo';
+import ShowWikiEntry from '../../../components/ShowWikiEntry';
+import * as mongoRepo from '../../../mongoRepo';
 
 type WikiPageParams = {
     name: string,

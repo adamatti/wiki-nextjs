@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import * as mongoRepo from '../../../src/mongoRepo';
+import * as mongoRepo from '../../../mongoRepo';
 
 const getString = (arg: string | string[]): string => {
     if (Array.isArray(arg)) {
