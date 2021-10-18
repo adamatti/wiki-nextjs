@@ -1,9 +1,8 @@
 import { WikiEntry } from "./types";
 import {MongoClient, Collection} from "mongodb";
+import config from "./config";
 
-// FIXME move it to env var
-const url = 'mongodb://localhost:27017';
-const client = new MongoClient(url);
+const client = new MongoClient(config.mongo.url);
 const connectPromise = client.connect();
 
 const removeId = (row: any) => {
@@ -14,10 +13,8 @@ const removeId = (row: any) => {
 
 const getCollection = async ():Promise<Collection> => {
     await connectPromise;
-    // FIXME move it to env var
-    const db = client.db("wiki");
-    // FIXME move it to env var
-    return db.collection('entries');
+    const db = client.db(config.mongo.dbName);
+    return db.collection(config.mongo.collectionName);
 }
 
 export async function list(): Promise<any> {

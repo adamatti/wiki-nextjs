@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import Footer from '../../../components/Footer';
+import LoginRequired from '../../../components/LoginRequired';
 import ShowWikiEntry from '../../../components/ShowWikiEntry';
 import * as mongoRepo from '../../../mongoRepo';
 
@@ -12,7 +14,10 @@ const WikiPage = (props: WikiPageParams) => {
         <Head>
             <title>{props.name}</title>
         </Head>
-        <ShowWikiEntry name={props.name} text={props.text} />
+        <LoginRequired>
+            <ShowWikiEntry name={props.name} text={props.text} />
+        </LoginRequired>
+        <Footer />
     </>;
 }
 

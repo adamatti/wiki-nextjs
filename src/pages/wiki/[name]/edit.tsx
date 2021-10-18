@@ -4,6 +4,8 @@ import * as wikiApiClient from '../../../wikiApiClient';
 import * as mongoRepo from '../../../mongoRepo';
 import {WikiEntry} from '../../../types';
 import Head from 'next/head';
+import Footer from '../../../components/Footer';
+import LoginRequired from '../../../components/LoginRequired';
 
 type EditPageParams = {
     name: string,
@@ -22,7 +24,10 @@ const EditPage = (props: EditPageParams) => {
         <Head>
             <title>Edit {props.name}</title>
         </Head>
-        <EditWikiEntry name={props.name} text={props.text} onSave={saveHandler}/>
+        <LoginRequired>
+            <EditWikiEntry name={props.name} text={props.text} onSave={saveHandler}/>
+        </LoginRequired>
+        <Footer/>
     </>
 }
 

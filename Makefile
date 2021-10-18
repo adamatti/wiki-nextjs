@@ -1,6 +1,9 @@
-clean:
+
+clean-app:
 	rm -rf .next
 	rm -rf coverage
+
+clean:
 	rm -rf node_modules
 
 run:
@@ -19,3 +22,5 @@ build:
 	yarn build
 
 check: lint test build
+
+clean-run: clean-app run

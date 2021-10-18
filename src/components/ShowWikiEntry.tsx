@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
+import styles from './ShowWikiEntry.module.scss';
 
 type ShowWikiEntryParams = {
     name: string
@@ -14,7 +15,7 @@ const ShowWikiEntry = (props: ShowWikiEntryParams) => {
         <div>
             <h1>{name}</h1> [ <Link href={`/wiki/${name}/edit`}>edit</Link> | <Link href={`/wiki/${name}/delete`}>delete</Link> ]
         </div>
-        <ReactMarkdown>{props.text || 'No text provided'}</ReactMarkdown>
+        <ReactMarkdown className={styles.markdown}>{props.text || 'No text provided'}</ReactMarkdown>
     </Box>);
 }
 
