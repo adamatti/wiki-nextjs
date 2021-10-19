@@ -13,12 +13,17 @@ export type NextIronHandler = (
 const withSession = (handler: NextIronHandler) =>
   withIronSession(handler, {
     password: process.env.SECRET_COOKIE_PASSWORD || "",
-    cookieName: "wiki-react3",
+    cookieName: process.env.COOKIE_NAME || "wiki-react4",
     cookieOptions: {
       // the next line allows to use the session in non-https environments like
       // Next.js dev mode (http://localhost:3000)
       secure: process.env.NODE_ENV === "production",
     },
   });
+
+export const isLoggedIn = (req: any) => {
+  const user = req.session.get("user");
+  return user && user.isLoggedIn;
+}
 
 export default withSession;

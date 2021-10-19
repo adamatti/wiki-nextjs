@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { WikiEntry, ResponseError } from '../../../types';
 import * as mongoRepo from '../../../mongoRepo';
+import withSession, {isLoggedIn} from "../../../lib/session";
 
 const getHandler = async (
   req: NextApiRequest,
@@ -25,10 +26,14 @@ const postHandler = async (
     .json({});
 }
 
-export default function handler(
+export default withSession((
     req: NextApiRequest,
     res: NextApiResponse<WikiEntry[] | ResponseError>
-  ) {
+  ) => {
+    if (!isLoggedIn(req)){
+      return res.status(401).json({error: "Not logged in"});
+    }
+
     if (req.method === 'GET') { 
       return getHandler(req,res);
     } 
@@ -36,4 +41,4 @@ export default function handler(
       return postHandler(req,res);
     }
     res.status(400).json({error: 'Method not supported'});
-};  
+});  

@@ -10,6 +10,7 @@ const Footer = () => {
             [
             <Link href="/profile">Profile</Link> |
             &nbsp;<Link href="/wiki/home">Home</Link> |
+            &nbsp;<Link href="/singlePage">Single Page</Link> |
             &nbsp;{user?.isLoggedIn === true && <Link href="/logout">Logout</Link> }
             {!user?.isLoggedIn  && <Link href="/login">Login</Link> }
             ] <br/>

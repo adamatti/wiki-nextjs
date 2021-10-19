@@ -38,7 +38,12 @@ const LoginForm = () => {
     return (<>
         <h1>Login page</h1>
         <form onSubmit={submitHandler}>
-            <TextField label="Username" required={true} inputRef={usernameRef}/><br/>
+            <TextField 
+                label="Username" 
+                required={true} 
+                inputRef={usernameRef}
+                defaultValue="adamatti@gmail.com"
+            /><br/>
             <TextField label="Password" type="password" required={true} inputRef={passwordRef}/><br/>
             <Button onClick={submitHandler}>Login</Button>
         </form>

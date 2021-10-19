@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import * as mongoRepo from '../../../mongoRepo';
+import withSession, {isLoggedIn} from "../../../lib/session";
 
 const getString = (arg: string | string[]): string => {
     if (Array.isArray(arg)) {
@@ -33,10 +34,13 @@ const getHandler = async (
         .json(entry);
 }
 
-export default function handler(
+export default withSession((
     req: NextApiRequest,
     res: NextApiResponse<any>
-  ) {
+  ) => {
+    if (!isLoggedIn(req)){
+        return res.status(401).json({error: "Not logged in"});
+      }
 
     if (req.method === "DELETE") {
         return deleteHandler(req, res);
@@ -45,4 +49,4 @@ export default function handler(
         return getHandler(req, res);
     }
     res.status(400).json({error: 'Method not supported'});
-}
+})

@@ -6,13 +6,17 @@ Pet project to learn next.js.
 - CRUD pages
 - render markdown
 - authentication
+- single page: show multiple entries in the same page
 
 # Pending implementation
 
-- show multiple entries in the same page
-- tests
 - better logging
+- tests
+- deploy somewhere (vercel? heroku?)
 - low: add tags to entries
+
+# Know issues
+
 - low/spike: the need to call mutateUser doesn't seems right
 
 # References

@@ -11,6 +11,11 @@ module.exports = {
         destination: '/wiki/home',
         permanent: true,
       },
+      {
+        source: '/',
+        destination: '/wiki/home',
+        permanent: true,
+      },
     ]
   },
   sassOptions: {
