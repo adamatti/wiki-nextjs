@@ -1,8 +1,9 @@
 import withSession from "../../lib/session";
 import {login} from "../../lib/firebaseAuth";
+import {default as loggerParent} from "../../logger";
+const logger = loggerParent.child({file: 'loginApi'});
 
 export default withSession(async (req, res) => {
-  console.log("Body", req.body);
   const { username, password } = await req.body;
 
   try {
@@ -20,7 +21,7 @@ export default withSession(async (req, res) => {
     res.status(200).json(user);
       
   } catch (error) {
-    console.log("Error: ", error);
+    logger.error("Error: ", error);
     res.status(500).json(error);
   }
 });

@@ -1,4 +1,6 @@
 import config from '../config';
+import {default as loggerParent} from "../logger";
+const logger = loggerParent.child({file: 'firebaseAuth'});
 
 type AuthResponse = {
     ok: boolean,
@@ -20,7 +22,7 @@ export const login = async (email: string, password: string):Promise<AuthRespons
     })
 
     if (response.ok) {
-        console.log("Firebase response: ok");
+        logger.debug("Firebase response: ok");
         return {ok: true};
     } else {
         const error = await response.json();

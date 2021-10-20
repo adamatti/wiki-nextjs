@@ -23,7 +23,8 @@
     "react-dom": "17.0.2",
     "react-markdown": "^7.0.1",
     "sass": "^1.43.2",
-    "swr": "^1.0.1"
+    "swr": "^1.0.1",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.15.0",

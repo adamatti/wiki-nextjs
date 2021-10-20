@@ -1,6 +1,8 @@
 import { WikiEntry } from "./types";
 import {MongoClient, Collection} from "mongodb";
 import config from "./config";
+import {default as loggerParent} from "./logger";
+const logger = loggerParent.child({file: 'mongoRepo'});
 
 const client = new MongoClient(config.mongo.url);
 const connectPromise = client.connect();
@@ -23,7 +25,7 @@ export async function list(): Promise<any> {
 }
 
 export async function save(entry: WikiEntry): Promise<WikiEntry> {
-    console.log('Repo: About to save', entry);
+    logger.debug('Repo: About to save', entry);
     const collection = await getCollection();
     await collection.updateOne(
         {_id: entry.name}, 
@@ -34,7 +36,7 @@ export async function save(entry: WikiEntry): Promise<WikiEntry> {
 }
 
 export async function remove(_id: string): Promise<any> {
-    console.log('Repo: About to remove', _id);
+    logger.debug('Repo: About to remove', _id);
     const collection = await getCollection();
     return collection.deleteOne({_id});
 }

@@ -1,8 +1,10 @@
 import withSession from "../../lib/session";
+import {default as loggerParent} from "../../logger";
+const logger = loggerParent.child({file: 'userApi'});
 
 export default withSession(async (req, res) => {
   const user = req.session.get("user");
-  console.log("API: /api/user called");
+  logger.debug("API: /api/user called");
 
   if (user) {
     // in a real world application you might read the user id from the session and then do a database request

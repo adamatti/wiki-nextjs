@@ -2,6 +2,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { WikiEntry, ResponseError } from '../../../types';
 import * as mongoRepo from '../../../mongoRepo';
 import withSession, {isLoggedIn} from "../../../lib/session";
+import {default as loggerParent} from "../../../logger";
+const logger = loggerParent.child({file: 'wikiApi'});
 
 const getHandler = async (
   req: NextApiRequest,
@@ -19,7 +21,7 @@ const postHandler = async (
   res: NextApiResponse<any>
 ) => {
   const entry = req.body;
-  console.log("API: About to save", entry);
+  logger.debug("API: About to save", entry);
   await mongoRepo.save(entry);
   res.status(201)
     .setHeader('Content-Type', 'application/json')
