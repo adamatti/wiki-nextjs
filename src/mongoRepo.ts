@@ -50,3 +50,8 @@ export async function get(_id: string): Promise<any> {
 export function close(){
     return client.close();
 }
+
+export async function count(): Promise<number> {
+    const collection = await getCollection();
+    return collection.countDocuments();
+}
